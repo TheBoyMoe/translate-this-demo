@@ -28,6 +28,10 @@
     <string name="translate_to">Translate to</string>
     <string name="translate_from">Translate from</string>
     <string name="from_text_hint">Press the microphone and start talking</string>
+    <string name="menu_title_save">Save</string>
+    <string name="menu_title_play">Play</string>
+    <string name="menu_title_translate">Translate</string>
+    <string name="menu_title_record">Record</string>
 
     <string-array name="speech_mode">
         <item>Short phrase</item>

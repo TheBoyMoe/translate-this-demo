@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity implements
     // impl of contract method
     @Override
     public void showMessage(String message) {
-        Utils.showSnackbar(mLayout, message);
+        Utils.showToast(this, message);
     }
 
     private CoordinatorLayout mLayout;

@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
@@ -55,6 +55,7 @@
         <item name="android:layout_weight">1</item>
         <item name="android:background">@color/colorSecondaryBackground</item>
         <item name="android:layout_margin">@dimen/normal</item>
+        <item name="android:elevation" tools:ignore="NewApi">@dimen/item_elevation</item>
     </style>
 
 
