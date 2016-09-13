@@ -1,9 +1,13 @@
 package com.example.translatethis.main.review.view;
 
-import android.support.v4.app.Fragment;
+import com.example.translatethis.main.ContractFragment;
 
 
-public class ReviewFragment extends Fragment{
+public class ReviewFragment extends ContractFragment<ReviewFragment.Contract>{
+
+    public interface Contract {
+
+    }
 
     public ReviewFragment() {}
 

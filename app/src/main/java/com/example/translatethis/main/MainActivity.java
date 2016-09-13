@@ -7,8 +7,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.translatethis.R;
+import com.example.translatethis.main.discover.view.DiscoverFragment;
+import com.example.translatethis.main.review.view.ReviewFragment;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements
+        ReviewFragment.Contract, DiscoverFragment.Contract{
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
