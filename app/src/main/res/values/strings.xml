@@ -23,6 +23,23 @@
         television programs. Some don\'t, become nothing. She starred in one of the ones
         that became nothing.</string>
     <string name="dummy_original_text">Mary had a little lamb, it\'s fleece was white as snow</string>
-    <string name="dummy_text_translation">Mary hatte ein Kleines Lamm seine Viles war weiB wie Schnee</string>
+    <string name="dummy_translation_text">Mary hatte ein Kleines Lamm seine Viles war weiB wie Schnee</string>
+
+    <string name="translate_to">Translate to</string>
+    <string name="translate_from">Translate from</string>
+    <string name="from_text_hint">Press the microphone and start talking</string>
+
+    <string-array name="speech_mode">
+        <item>Short phrase</item>
+        <item>Long dictation</item>
+    </string-array>
+
+    <string-array name="supported_languages">
+        <item>English-GB</item>
+        <item>French</item>
+        <item>German</item>
+        <item>Italian</item>
+        <item>Spanish</item>
+    </string-array>
 
 </resources>

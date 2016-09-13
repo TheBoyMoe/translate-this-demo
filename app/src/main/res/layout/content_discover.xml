@@ -1,25 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 xmlns:tools="http://schemas.android.com/tools"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
     <LinearLayout
-        android:layout_alignParentTop="true"
         android:orientation="vertical"
+        android:paddingTop="@dimen/normal"
+        android:paddingBottom="@dimen/normal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        tools:ignore="UselessParent">
 
         <EditText
             android:id="@+id/text_original"
-            android:gravity="center"
             tools:text="@string/dummy_original_text"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"/>
+            android:text="@string/dummy_original_text"
+            style="@style/TextStyle.DiscoverTextViewStyle.EditText"/>
 
         <LinearLayout
+            android:id="@+id/language_toolbar"
             android:orientation="horizontal"
+            android:gravity="center_vertical"
             android:paddingTop="@dimen/normal"
             android:paddingBottom="@dimen/normal"
             android:layout_width="match_parent"
@@ -27,33 +29,36 @@
 
             <android.support.v7.widget.AppCompatSpinner
                 android:id="@+id/spinner_from"
-                tools:text="English"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"/>
+                android:entries="@array/supported_languages"
+                android:prompt="@string/translate_from"
+                style="@style/SpinnerStyle"
+                />
 
             <ImageView
                 android:src="@drawable/ic_sync"
+                android:layout_marginLeft="@dimen/normal"
+                android:layout_marginRight="@dimen/normal"
                 android:layout_width="@dimen/icon_size"
-                android:layout_height="@dimen/icon_size"/>
+                android:layout_height="@dimen/icon_size"
+                tools:ignore="ContentDescription"/>
 
             <android.support.v7.widget.AppCompatSpinner
                 android:id="@+id/spinner_to"
-                tools:text="German"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"/>
+                android:entries="@array/supported_languages"
+                android:prompt="@string/translate_to"
+                style="@style/SpinnerStyle"/>
 
         </LinearLayout>
 
-        <EditText
+        <TextView
             android:id="@+id/text_translation"
-            android:gravity="center"
-            tools:text="@string/dummy_text_translation"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"/>
+            tools:text="@string/dummy_translation_text"
+            android:text="@string/dummy_translation_text"
+            style="@style/TextStyle.DiscoverTextViewStyle"/>
 
     </LinearLayout>
+
+
+
 
 </RelativeLayout>

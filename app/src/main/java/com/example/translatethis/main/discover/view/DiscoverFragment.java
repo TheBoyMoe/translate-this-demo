@@ -6,7 +6,6 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.example.translatethis.R;
 import com.example.translatethis.main.ContractFragment;
@@ -42,10 +41,7 @@ public class DiscoverFragment extends ContractFragment<DiscoverFragment.Contract
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.content_main, container, false);
-        TextView title = (TextView) view.findViewById(R.id.title);
-        title.setText("Discover Fragment");
-        title.setOnClickListener(titleClick);
+        View view = inflater.inflate(R.layout.content_discover, container, false);
         return view;
     }
 
