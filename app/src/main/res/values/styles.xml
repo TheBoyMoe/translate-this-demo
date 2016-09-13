@@ -25,7 +25,7 @@
 
     <!-- Text styles -->
     <style name="TextStyle">
-        <item name="android:fontFamily">sans-serif-condensed</item>
+        <item name="android:fontFamily">sans-serif-thin</item>
         <item name="android:textSize">16sp</item>
         <item name="android:textColor">@color/colorPrimaryText</item>
         <item name="android:layout_width">wrap_content</item>
@@ -33,18 +33,30 @@
     </style>
 
     <style name="TextStyle.DiscoverTextViewStyle">
+        <item name="android:textSize">18sp</item>
+        <item name="android:fontFamily">sans-serif-condensed-thin</item>
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">0dp</item>
-        <item name="android:layout_weight">1</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:paddingLeft">@dimen/normal</item>
+        <item name="android:paddingRight">@dimen/normal</item>
         <item name="android:gravity">center</item>
-        <item name="android:layout_margin">@dimen/normal</item>
     </style>
 
     <style name="TextStyle.DiscoverTextViewStyle.EditText">
         <item name="android:cursorVisible">false</item>
         <item name="android:focusable">false</item>
         <item name="android:background">@color/colorNeutral</item>
+        <item name="android:inputType">textMultiLine</item>
     </style>
+
+    <style name="CardViewStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:background">@color/colorSecondaryBackground</item>
+        <item name="android:layout_margin">@dimen/normal</item>
+    </style>
+
 
 
 </resources>

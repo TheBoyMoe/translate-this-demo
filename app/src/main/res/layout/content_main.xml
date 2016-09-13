@@ -6,6 +6,7 @@
     android:id="@+id/content_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimaryBackground"
     android:padding="@dimen/normal"
     tools:context="com.example.translatethis.main.MainActivity"
     tools:showIn="@layout/activity_main">

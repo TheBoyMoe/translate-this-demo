@@ -10,5 +10,7 @@
     <dimen name="xxlarge">56dp</dimen>
 
     <dimen name="icon_size">24dp</dimen>
+    <dimen name="corner_radius">0dp</dimen>
+    <dimen name="item_elevation">3dp</dimen>
 
 </resources>
