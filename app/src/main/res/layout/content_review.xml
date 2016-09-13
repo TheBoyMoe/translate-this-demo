@@ -1,24 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/content_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/normal"
     tools:context="com.example.translatethis.main.MainActivity"
     tools:showIn="@layout/activity_main">
 
-
     <TextView
         android:id="@+id/title"
-        android:layout_centerInParent="true"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        android:layout_width="wrap_content"
+        android:textSize="20sp"
+        android:textStyle="normal"
+        android:padding="@dimen/normal"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:text="Hello World!"/>
 
-
-</RelativeLayout>
+</ScrollView>
