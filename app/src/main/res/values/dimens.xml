@@ -9,4 +9,6 @@
     <dimen name="xlarge">48dp</dimen>
     <dimen name="xxlarge">56dp</dimen>
 
+    <dimen name="icon_size">56dp</dimen>
+
 </resources>
