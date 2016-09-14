@@ -18,10 +18,16 @@ import com.example.translatethis.main.review.view.ReviewFragment;
 public class MainActivity extends AppCompatActivity implements
         ReviewFragment.Contract, DiscoverFragment.Contract{
 
-    // impl of contract method
+    // impl of DiscoverFragment contract
     @Override
     public void showMessage(String message) {
         Utils.showToast(this, message);
+    }
+
+    // impl ReviewFragment contract
+    @Override
+    public void showReviewMessage(String message) {
+        Utils.showSnackbar(mLayout, message);
     }
 
     private CoordinatorLayout mLayout;
@@ -70,6 +76,7 @@ public class MainActivity extends AppCompatActivity implements
         setupViewPager(viewPager);
         tabLayout.setupWithViewPager(viewPager);
     }
+
 
 
 }
