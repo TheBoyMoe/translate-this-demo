@@ -26,7 +26,7 @@ public class ReviewModel implements MainMVP.ProvidedModelOps{
     @Override
     public boolean loadItems() {
         // TODO
-        return false ;
+        return mList != null;
     }
 
     @Override

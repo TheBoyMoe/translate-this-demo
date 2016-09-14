@@ -53,6 +53,16 @@ public class ReviewFragment extends ContractFragment<ReviewFragment.Contract>
 
     }
 
+    @Override
+    public void showProgress() {
+
+    }
+
+    @Override
+    public void hideProgress() {
+
+    }
+
     // communicate with the hosting activity
     public interface Contract {
 

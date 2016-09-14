@@ -6,15 +6,15 @@ import android.content.ContentValues;
 public class Item {
 
     private int mId = -1;
-    private String mFromText;
-    private String mToString;
+    private String mOriginalText;
+    private String mTranslatedText;
     private String mAudioFile;
 
     public Item() {}
 
-    public Item(String fromText, String toString, String audioFile) {
-        mFromText = fromText;
-        mToString = toString;
+    public Item(String fromText, String toText, String audioFile) {
+        mOriginalText = fromText;
+        mTranslatedText = toText;
         mAudioFile = audioFile;
     }
 
@@ -30,20 +30,20 @@ public class Item {
         mId = id;
     }
 
-    public String getFromText() {
-        return mFromText;
+    public String getOriginalText() {
+        return mOriginalText;
     }
 
-    public void setFromText(String fromText) {
-        mFromText = fromText;
+    public void setOriginalText(String originalText) {
+        mOriginalText = originalText;
     }
 
-    public String getToString() {
-        return mToString;
+    public String getTranslatedText() {
+        return mTranslatedText;
     }
 
-    public void setToString(String toString) {
-        mToString = toString;
+    public void setTranslatedText(String translatedText) {
+        mTranslatedText = translatedText;
     }
 
     public String getAudioFile() {

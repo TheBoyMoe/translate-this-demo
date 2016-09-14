@@ -3,6 +3,7 @@ package com.example.translatethis.main.review;
 
 import android.content.Context;
 import android.support.v7.app.AlertDialog;
+import android.view.ViewGroup;
 
 import com.example.translatethis.main.review.view.recycler.ItemViewHolder;
 import com.example.translatethis.model.Item;
@@ -21,6 +22,8 @@ public interface MainMVP {
         void notifyItemRangeChanged(int positionStart, int itemCount);
         void showMessage(String message);
         void showDialog(AlertDialog dialog);
+        void showProgress();
+        void hideProgress();
     }
 
     // implemented by the Presenter, available to the View
@@ -29,6 +32,7 @@ public interface MainMVP {
         void deleteItem(Item item, int adapterPosition, int layoutPosition);
         int getItemCount();
         void bindViewHolder(ItemViewHolder holder, int position);
+        ItemViewHolder createViewHolder(ViewGroup parent, int viewType);
         void setView(RequiredViewOps view);
         void onDestroy(boolean isChangingConfiguration);
     }
