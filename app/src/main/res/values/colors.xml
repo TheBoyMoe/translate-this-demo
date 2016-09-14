@@ -7,4 +7,5 @@
     <color name="colorPrimaryBackground">#EDEFEF</color>
     <color name="colorSecondaryBackground">#FFFFFF</color>
     <color name="colorNeutral">@android:color/transparent</color>
+    <color name="colorDivider">#EEEEEE</color>
 </resources>

@@ -59,5 +59,13 @@
     </style>
 
 
+    <style name="TextStyle.ListItem">
+        <item name="android:maxLines">2</item>
+    </style>
+
+    <style name="TextStyle.ListItem.Translation">
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:layout_marginTop">@dimen/small</item>
+    </style>
 
 </resources>
