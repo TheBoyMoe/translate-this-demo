@@ -83,7 +83,11 @@ public class ReviewPresenter implements MainMVP.ProvidedPresenterOps, MainMVP.Re
 
     @Override
     public int getItemCount() {
-        return mModel.getItemCount();
+        // FIXME ?? check with original
+        if (mModel != null) { // NPE on device rotation
+            return mModel.getItemCount();
+        }
+        return 0;
     }
 
     @Override
@@ -120,9 +124,11 @@ public class ReviewPresenter implements MainMVP.ProvidedPresenterOps, MainMVP.Re
     @Override
     public void onDestroy(boolean isChangingConfiguration) {
         mView = null;
-        mModel.onDestroy(isChangingConfiguration); // forward to model
-        if (isChangingConfiguration) {
-            mModel = null;
+        if (mModel != null) { // NPE on device rotation otherwise
+            mModel.onDestroy(isChangingConfiguration); // forward to model
+            if (isChangingConfiguration) {
+                mModel = null;
+            }
         }
     }
 

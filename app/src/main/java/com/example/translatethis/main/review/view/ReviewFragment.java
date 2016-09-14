@@ -13,7 +13,6 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 
 import com.example.translatethis.R;
-import com.example.translatethis.custom.ItemSpacerDecoration;
 import com.example.translatethis.main.ContractFragment;
 import com.example.translatethis.main.StateMaintainer;
 import com.example.translatethis.main.review.MainMVP;
@@ -92,6 +91,7 @@ public class ReviewFragment extends ContractFragment<ReviewFragment.Contract>
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setRetainInstance(true);
         mStateMaintainer =
             new StateMaintainer(getActivity().getSupportFragmentManager(), ReviewFragment.class.getName());
     }
@@ -109,10 +109,10 @@ public class ReviewFragment extends ContractFragment<ReviewFragment.Contract>
         manager.setOrientation(LinearLayoutManager.VERTICAL);
         mAdapter = new ItemListAdapter();
         recyclerView.setLayoutManager(manager);
-        recyclerView.addItemDecoration(new ItemSpacerDecoration(
-                getResources().getDimensionPixelOffset(R.dimen.item_vertical_margin),
-                getResources().getDimensionPixelOffset(R.dimen.item_horizontal_margin)
-        ));
+//        recyclerView.addItemDecoration(new ItemSpacerDecoration(
+//                getResources().getDimensionPixelOffset(R.dimen.item_vertical_margin),
+//                getResources().getDimensionPixelOffset(R.dimen.item_horizontal_margin)
+//        ));
         recyclerView.setAdapter(mAdapter);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
@@ -124,7 +124,9 @@ public class ReviewFragment extends ContractFragment<ReviewFragment.Contract>
     @Override
     public void onDestroy() {
         super.onDestroy();
-        mPresenter.onDestroy(getActivity().isChangingConfigurations());
+        if (mPresenter != null) { // NPE on device rotation otherwise
+            mPresenter.onDestroy(getActivity().isChangingConfigurations());
+        }
     }
 
     private void setupMVP() {
@@ -159,7 +161,11 @@ public class ReviewFragment extends ContractFragment<ReviewFragment.Contract>
 
         @Override
         public int getItemCount() {
-            return mPresenter.getItemCount();
+            // FIXME ?? compare to original
+            if (mPresenter != null) { // NPE on device rotation
+                return mPresenter.getItemCount();
+            }
+            return 0;
         }
     }
 

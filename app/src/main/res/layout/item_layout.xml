@@ -6,6 +6,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:cardUseCompatPadding="true"
+    android:layout_marginTop="@dimen/small"
+    android:layout_marginLeft="@dimen/small"
+    android:layout_marginRight="@dimen/small"
     android:elevation="@dimen/item_elevation"
     app:cardCornerRadius="@dimen/corner_radius"
     tools:ignore="UnusedAttribute">
