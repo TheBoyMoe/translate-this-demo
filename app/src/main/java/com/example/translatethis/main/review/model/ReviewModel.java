@@ -17,7 +17,7 @@ public class ReviewModel implements MainMVP.ProvidedModelOps{
 
     public ReviewModel(MainMVP.RequiredPresenterOps presenter) {
         mPresenter = presenter;
-        mList = (ArrayList<Item>) Arrays.asList(DummyItemDataCache.dataCache);
+        mList = new ArrayList<>(Arrays.asList(DummyItemDataCache.dataCache));
     }
 
 

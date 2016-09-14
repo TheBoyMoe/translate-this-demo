@@ -38,6 +38,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
+            android:layout_marginTop="@dimen/normal"
             android:paddingLeft="@dimen/normal"
             android:paddingRight="@dimen/normal"
             android:background="@color/colorDivider" />

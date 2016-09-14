@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 
 import com.example.translatethis.R;
+import com.example.translatethis.custom.ItemSpacerDecoration;
 import com.example.translatethis.main.ContractFragment;
 import com.example.translatethis.main.StateMaintainer;
 import com.example.translatethis.main.review.MainMVP;
@@ -33,8 +34,8 @@ public class ReviewFragment extends ContractFragment<ReviewFragment.Contract>
     private ProgressBar mProgressBar;
     private ItemListAdapter mAdapter;
 
-    protected final StateMaintainer mStateMaintainer =
-        new StateMaintainer(getActivity().getSupportFragmentManager(), ReviewFragment.class.getName());
+    protected StateMaintainer mStateMaintainer;
+
 
     // RequiredViewOps available to the Presenter
     @Override
@@ -88,6 +89,13 @@ public class ReviewFragment extends ContractFragment<ReviewFragment.Contract>
         return new ReviewFragment();
     }
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mStateMaintainer =
+            new StateMaintainer(getActivity().getSupportFragmentManager(), ReviewFragment.class.getName());
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -101,6 +109,10 @@ public class ReviewFragment extends ContractFragment<ReviewFragment.Contract>
         manager.setOrientation(LinearLayoutManager.VERTICAL);
         mAdapter = new ItemListAdapter();
         recyclerView.setLayoutManager(manager);
+        recyclerView.addItemDecoration(new ItemSpacerDecoration(
+                getResources().getDimensionPixelOffset(R.dimen.item_vertical_margin),
+                getResources().getDimensionPixelOffset(R.dimen.item_horizontal_margin)
+        ));
         recyclerView.setAdapter(mAdapter);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 

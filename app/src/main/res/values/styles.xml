@@ -19,6 +19,7 @@
 
     <!-- Spinner style -->
     <style name="SpinnerStyle" parent="@android:style/Widget.Holo.DropDownItem.Spinner">
+        <item name="android:fontFamily">sans-serif-condensed</item>
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_weight">1</item>
         <item name="android:layout_height">wrap_content</item>
@@ -35,16 +36,15 @@
 
     <!-- Text styles -->
     <style name="TextStyle">
-        <item name="android:fontFamily">sans-serif-thin</item>
-        <item name="android:textSize">16sp</item>
+        <!--<item name="android:fontFamily">sans-serif-thin</item>-->
+        <item name="android:fontFamily">sans-serif-condensed</item>
+        <item name="android:textSize">18sp</item>
         <item name="android:textColor">@color/colorPrimaryText</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
 
     <style name="TextStyle.DiscoverTextViewStyle">
-        <item name="android:textSize">18sp</item>
-        <item name="android:fontFamily">sans-serif-condensed-thin</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:paddingLeft">@dimen/normal</item>
@@ -64,12 +64,13 @@
         <item name="android:layout_height">0dp</item>
         <item name="android:layout_weight">1</item>
         <item name="android:background">@color/colorSecondaryBackground</item>
-        <item name="android:layout_margin">@dimen/normal</item>
+        <item name="android:layout_margin">@dimen/small</item>
         <item name="android:elevation" tools:ignore="NewApi">@dimen/item_elevation</item>
     </style>
 
 
     <style name="TextStyle.ListItem">
+        <item name="android:fontFamily">sans-serif-condensed</item>
         <item name="android:maxLines">2</item>
     </style>
 
