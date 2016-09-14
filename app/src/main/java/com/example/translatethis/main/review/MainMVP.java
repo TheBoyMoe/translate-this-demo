@@ -7,6 +7,8 @@ import android.support.v7.app.AlertDialog;
 import com.example.translatethis.main.review.view.recycler.ItemViewHolder;
 import com.example.translatethis.model.Item;
 
+import java.util.ArrayList;
+
 public interface MainMVP {
 
     // implemented by the View, available to the Presenter
@@ -40,6 +42,7 @@ public interface MainMVP {
 
     // implemented by the model, available to the Presenter
     interface ProvidedModelOps {
+        ArrayList<Item> getItems();
         boolean loadItems();
         Item getItem(int position);
         boolean deleteItem(Item item, int adapterPosition);
