@@ -16,6 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <!-- from/to text -->
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
@@ -28,7 +29,7 @@
 
             <TextView
                 android:id="@+id/text_translation"
-                tools:text="Nicht mehr Umschalten zwischen Anwendungen"
+                tools:text="Nicht mehr Umschalten zwischen Anwendungen "
                 style="@style/TextStyle.ListItem.Translation"/>
 
         </LinearLayout>
@@ -41,6 +42,7 @@
             android:paddingRight="@dimen/normal"
             android:background="@color/colorDivider" />
 
+        <!-- icon bar -->
         <RelativeLayout
             android:paddingTop="@dimen/normal"
             android:layout_width="match_parent"

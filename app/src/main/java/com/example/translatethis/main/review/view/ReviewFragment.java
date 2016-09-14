@@ -1,7 +1,9 @@
 package com.example.translatethis.main.review.view;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,10 +11,49 @@ import android.widget.TextView;
 
 import com.example.translatethis.R;
 import com.example.translatethis.main.ContractFragment;
+import com.example.translatethis.main.review.MainMVP;
 
 
-public class ReviewFragment extends ContractFragment<ReviewFragment.Contract>{
+public class ReviewFragment extends ContractFragment<ReviewFragment.Contract>
+        implements MainMVP.RequiredViewOps{
 
+    // RequiredViewOps available to the Presenter
+    @Override
+    public Context getAppContext() {
+        return null;
+    }
+
+    @Override
+    public Context getActivityContext() {
+        return null;
+    }
+
+    @Override
+    public void notifyItemRemoved(int position) {
+
+    }
+
+    @Override
+    public void notifyDataSetChanged() {
+
+    }
+
+    @Override
+    public void notifyItemRangeChanged(int positionStart, int itemCount) {
+
+    }
+
+    @Override
+    public void showMessage(String message) {
+
+    }
+
+    @Override
+    public void showDialog(AlertDialog dialog) {
+
+    }
+
+    // communicate with the hosting activity
     public interface Contract {
 
     }
