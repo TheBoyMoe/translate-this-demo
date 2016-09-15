@@ -1,29 +1,7 @@
 <resources>
 
-    <string name="app_name">Translate This...</string>
+    <string name="app_name">Translate This</string>
     <string name="action_settings">Settings</string>
-    <string name="long_text">Normally, both your asses would be dead as fucking fried chicken,
-        but you happen to pull this shit while I\'m in a transitional period so I don\'t wanna
-        kill you, I wanna help you. But I can\'t give you this case, it don\'t belong to me.
-        Besides, I\'ve already been through too much shit this morning over this case to hand
-        it over to your dumb ass.\n\n
-        Well, the way they make shows is, they make one show. That show\'s called a pilot.
-        Then they show that show to the people who make shows, and on the strength of that one
-        show they decide if they\'re going to make more shows. Some pilots get picked and become
-        television programs. Some don\'t, become nothing. She starred in one of the ones
-        that became nothing.\n\n
-        Normally, both your asses would be dead as fucking fried chicken,
-        but you happen to pull this shit while I\'m in a transitional period so I don\'t wanna
-        kill you, I wanna help you. But I can\'t give you this case, it don\'t belong to me.
-        Besides, I\'ve already been through too much shit this morning over this case to hand
-        it over to your dumb ass.\n\n
-        Well, the way they make shows is, they make one show. That show\'s called a pilot.
-        Then they show that show to the people who make shows, and on the strength of that one
-        show they decide if they\'re going to make more shows. Some pilots get picked and become
-        television programs. Some don\'t, become nothing. She starred in one of the ones
-        that became nothing.</string>
-    <string name="dummy_original_text">Mary had a little lamb, it\'s fleece was white as snow</string>
-    <string name="dummy_translation_text">Mary hatte ein Kleines Lamm seine Viles war weiB wie Schnee</string>
 
     <string name="translate_to">Translate to</string>
     <string name="translate_from">Translate from</string>
@@ -33,7 +11,7 @@
     <string name="menu_title_translate">Translate</string>
     <string name="menu_title_record">Record</string>
     <string name="translated_text_hint">Your translated text will appear here</string>
-    <string name="original_text_field_hint">Click on the mic button to start</string>
+    <string name="original_text_field_hint">Tap on the mic button to start recording</string>
 
     <string-array name="speech_mode">
         <item>Short phrase</item>
