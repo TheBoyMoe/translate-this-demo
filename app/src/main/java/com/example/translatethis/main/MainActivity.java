@@ -20,8 +20,8 @@ public class MainActivity extends AppCompatActivity implements
 
     // impl of DiscoverFragment contract
     @Override
-    public void showMessage(String message) {
-        Utils.showToast(this, message);
+    public void showDiscoverMessage(String message) {
+        Utils.showSnackbar(mLayout, message);
     }
 
     // impl ReviewFragment contract
@@ -76,7 +76,6 @@ public class MainActivity extends AppCompatActivity implements
         setupViewPager(viewPager);
         tabLayout.setupWithViewPager(viewPager);
     }
-
 
 
 }

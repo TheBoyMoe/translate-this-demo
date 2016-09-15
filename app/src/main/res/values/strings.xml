@@ -32,6 +32,8 @@
     <string name="menu_title_play">Play</string>
     <string name="menu_title_translate">Translate</string>
     <string name="menu_title_record">Record</string>
+    <string name="translated_text_hint">Your translated text will appear here</string>
+    <string name="original_text_field_hint">Click on the mic button to start</string>
 
     <string-array name="speech_mode">
         <item>Short phrase</item>

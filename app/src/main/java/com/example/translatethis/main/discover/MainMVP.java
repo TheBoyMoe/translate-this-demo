@@ -21,6 +21,8 @@ public interface MainMVP {
         void translateResult();
         void playResult(String filePath);
         int saveResult(Item item);
+        void setView(RequiredViewOps view);
+        void onDestroy(boolean isChangingConfiguration);
     }
 
     // implemented by the Presenter, available to the Model

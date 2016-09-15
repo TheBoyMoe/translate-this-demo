@@ -1,4 +1,4 @@
-package com.example.translatethis.main;
+package com.example.translatethis.main.common;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

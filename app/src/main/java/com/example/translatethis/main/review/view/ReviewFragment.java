@@ -13,8 +13,8 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 
 import com.example.translatethis.R;
-import com.example.translatethis.main.ContractFragment;
-import com.example.translatethis.main.StateMaintainer;
+import com.example.translatethis.main.common.ContractFragment;
+import com.example.translatethis.main.common.StateMaintainer;
 import com.example.translatethis.main.review.MainMVP;
 import com.example.translatethis.main.review.model.ReviewModel;
 import com.example.translatethis.main.review.presenter.ReviewPresenter;

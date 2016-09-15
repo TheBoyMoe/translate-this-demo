@@ -28,4 +28,11 @@ public class DiscoverModel implements MainMVP.ProvidedModelOps{
     }
     // END
 
+    private MainMVP.RequiredPresenterOps mPresenter;
+
+    public DiscoverModel(MainMVP.RequiredPresenterOps presenter) {
+        mPresenter = presenter;
+    }
+
+
 }
