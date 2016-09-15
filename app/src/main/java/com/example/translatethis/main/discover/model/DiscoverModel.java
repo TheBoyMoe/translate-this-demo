@@ -9,22 +9,25 @@ public class DiscoverModel implements MainMVP.ProvidedModelOps{
     // impl ProvidedModelOps contract methods
     @Override
     public int getItemCount() {
+        // TODO
         return 0;
     }
 
     @Override
     public Item getItem(int position) {
+        // TODO retrieve item from database
         return null;
     }
 
     @Override
     public int insertItem(Item item) {
+        // TODO insert item into database
         return 0;
     }
 
     @Override
     public void onDestroy(boolean isConfigurationChanging) {
-
+        if (isConfigurationChanging) mPresenter = null;
     }
     // END
 

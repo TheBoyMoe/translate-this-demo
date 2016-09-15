@@ -63,7 +63,7 @@ public class ReviewPresenter implements MainMVP.ProvidedPresenterOps, MainMVP.Re
         try {
             return getView().getActivityContext();
         } catch (NullPointerException e) {
-            Timber.i("%s %s", Constants.LOG_TAG, e.getMessage());
+            Timber.e("%s %s", Constants.LOG_TAG, e.getMessage());
             return null;
         }
     }
@@ -126,9 +126,7 @@ public class ReviewPresenter implements MainMVP.ProvidedPresenterOps, MainMVP.Re
         mView = null;
         if (mModel != null) { // NPE on device rotation otherwise
             mModel.onDestroy(isChangingConfiguration); // forward to model
-            if (isChangingConfiguration) {
-                mModel = null;
-            }
+            if (isChangingConfiguration) mModel = null;
         }
     }
 

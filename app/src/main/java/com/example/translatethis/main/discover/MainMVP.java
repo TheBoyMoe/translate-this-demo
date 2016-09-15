@@ -12,6 +12,7 @@ public interface MainMVP {
     interface RequiredViewOps {
         Context getAppContext();
         Context getActivityContext();
+        void showMessage(String message);
     }
 
     // implemented by the Presenter, available to the View

@@ -29,6 +29,11 @@ public class DiscoverFragment extends ContractFragment<DiscoverFragment.Contract
     public Context getActivityContext() {
         return getActivity();
     }
+
+    @Override
+    public void showMessage(String message) {
+        getContract().showDiscoverMessage(message);
+    }
     // END
 
     public interface Contract {
@@ -91,6 +96,7 @@ public class DiscoverFragment extends ContractFragment<DiscoverFragment.Contract
     private void initView(View view) {
         mOriginalText = (TextView) view.findViewById(R.id.text_original);
         mTranslatedText = (TextView) view.findViewById(R.id.text_translation);
+        // TODO setup spinner's
     }
 
     private void setupBottomToolbarButtons(View view) {
@@ -107,19 +113,21 @@ public class DiscoverFragment extends ContractFragment<DiscoverFragment.Contract
             // forward these to the presenter for processing
             switch (view.getId()) {
                 case R.id.action_record:
-                    //getContract().showMessage("Click record");
+                    mPresenter.recordSpeech();
                     break;
                 case R.id.action_edit:
-                    //getContract().showMessage("Clicked edit");
+                    mPresenter.editResult();
                     break;
                 case R.id.action_translate:
-                    //getContract().showMessage("Clicked translate");
+                    mPresenter.translateResult();
                     break;
                 case R.id.action_play:
-                    //getContract().showMessage("Clicked play");
+                    // TODO
+                    mPresenter.playResult("");
                     break;
                 case R.id.action_save:
-                    //getContract().showMessage("Clicked save");
+                    // TODO
+                    mPresenter.saveResult(null);
                     break;
             }
         }
