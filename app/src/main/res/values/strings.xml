@@ -11,7 +11,8 @@
     <string name="menu_title_translate">Translate</string>
     <string name="menu_title_record">Record</string>
     <string name="translated_text_hint">Your translated text will appear here</string>
-    <string name="original_text_field_hint">Tap on the mic button to start recording</string>
+    <string name="original_text_hint">Tap on the mic button to start recording</string>
+    <string name="network_error_message">Network error, check connection</string>
 
     <string-array name="speech_mode">
         <item>Short phrase</item>

@@ -15,6 +15,7 @@
         android:layout_weight="1"
         tools:ignore="UselessParent">
 
+
         <!-- From text -->
         <android.support.v7.widget.CardView
             style="@style/CardViewStyle"
@@ -22,11 +23,34 @@
             app:cardCornerRadius="@dimen/corner_radius"
             tools:ignore="UnusedAttribute">
 
-            <EditText
-                android:id="@+id/text_original"
-                android:hint="@string/original_text_field_hint"
-                style="@style/TextStyle.DiscoverTextViewStyle.EditText"
-                />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ScrollView
+                    android:paddingTop="@dimen/small"
+                    android:paddingBottom="@dimen/small"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <EditText
+                        android:id="@+id/text_original"
+                        android:hint="@string/original_text_hint"
+                        style="@style/TextStyle.DiscoverTextViewStyle.EditText"
+                        />
+
+                </ScrollView>
+
+                <ImageView
+                    android:id="@+id/recording_icon"
+                    android:layout_alignParentBottom="true"
+                    android:src="@drawable/ic_record_dark"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:ignore="ContentDescription"/>
+
+
+            </RelativeLayout>
 
         </android.support.v7.widget.CardView>
         

@@ -4,18 +4,32 @@ package com.example.translatethis.main.discover.presenter;
 import android.content.Context;
 
 import com.example.translatethis.common.Constants;
+import com.example.translatethis.common.Utils;
 import com.example.translatethis.main.discover.MainMVP;
 import com.example.translatethis.model.Item;
+import com.microsoft.projectoxford.speechrecognition.ISpeechRecognitionServerEvents;
+import com.microsoft.projectoxford.speechrecognition.MicrophoneRecognitionClient;
+import com.microsoft.projectoxford.speechrecognition.RecognitionResult;
+import com.microsoft.projectoxford.speechrecognition.SpeechRecognitionMode;
 
 import java.lang.ref.WeakReference;
 
 import timber.log.Timber;
 
-public class DiscoverPresenter implements MainMVP.ProvidedPresenterOps, MainMVP.RequiredPresenterOps{
+public class DiscoverPresenter implements
+        MainMVP.ProvidedPresenterOps,
+        MainMVP.RequiredPresenterOps,
+        ISpeechRecognitionServerEvents {
 
     // cache references to the Presenter and Model
     private WeakReference<MainMVP.RequiredViewOps> mView;
     private MainMVP.ProvidedModelOps mModel;
+
+    private MicrophoneRecognitionClient mClient = null;
+    private SpeechRecognitionMode mSpeechMode = SpeechRecognitionMode.ShortPhrase;
+    private String mLanguageCode = Constants.LANGUAGE_CODES[0]; // default English-GB
+    private String mKey = Constants.PRIMARY_SUBSCRIPTION_KEY;
+    private boolean mHasStartedRecording;
 
     // constructor
     public DiscoverPresenter(MainMVP.RequiredViewOps view) {
@@ -37,8 +51,12 @@ public class DiscoverPresenter implements MainMVP.ProvidedPresenterOps, MainMVP.
     // impl contract methods
     @Override
     public void recordSpeech() {
-        // TODO
-        getView().showMessage("Speech to Text");
+        if (Utils.isClientConnected(getActivityContext())) {
+            getView().updateResultTextField("Hello world!");
+            getView().recordingStarted();
+        } else {
+            getView().isClientConnected(false);
+        }
     }
 
     @Override
@@ -98,6 +116,32 @@ public class DiscoverPresenter implements MainMVP.ProvidedPresenterOps, MainMVP.
             Timber.e("%s %s", Constants.LOG_TAG, e.getMessage());
             return null;
         }
+    }
+
+    // impl of MS Speech Recognition Service
+    @Override
+    public void onPartialResponseReceived(String s) {
+
+    }
+
+    @Override
+    public void onFinalResponseReceived(RecognitionResult recognitionResult) {
+
+    }
+
+    @Override
+    public void onIntentReceived(String s) {
+
+    }
+
+    @Override
+    public void onError(int i, String s) {
+
+    }
+
+    @Override
+    public void onAudioEvent(boolean b) {
+
     }
     // END
 

@@ -21,7 +21,8 @@ public class MainActivity extends AppCompatActivity implements
     // impl of DiscoverFragment contract
     @Override
     public void showDiscoverMessage(String message) {
-        Utils.showSnackbar(mLayout, message);
+        // Utils.showSnackbar(mLayout, message);
+        Utils.showToast(this, message);
     }
 
     // impl ReviewFragment contract

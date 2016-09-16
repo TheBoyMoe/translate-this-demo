@@ -6,6 +6,8 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.translatethis.R;
@@ -34,6 +36,35 @@ public class DiscoverFragment extends ContractFragment<DiscoverFragment.Contract
     public void showMessage(String message) {
         getContract().showDiscoverMessage(message);
     }
+
+    @Override
+    public void updateResultTextField(String update) {
+        mOriginalText.setText(update);
+    }
+
+    @Override
+    public void updateTranslatedTextField(String result) {
+
+    }
+
+    @Override
+    public void recordingStarted() {
+        mRecordIcon.setImageResource(R.drawable.ic_record_busy);
+    }
+
+    @Override
+    public void recordingComplete() {
+        mRecordIcon.setImageResource(R.drawable.ic_record_dark);
+    }
+
+    @Override
+    public void isClientConnected(boolean result) {
+        if (!result) {
+            getContract().showDiscoverMessage(getString(R.string.network_error_message));
+        }
+    }
+
+
     // END
 
     public interface Contract {
@@ -44,6 +75,10 @@ public class DiscoverFragment extends ContractFragment<DiscoverFragment.Contract
     private MainMVP.ProvidedPresenterOps mPresenter;
     private TextView mOriginalText;
     private TextView mTranslatedText;
+    private Spinner mFromSpinner;
+    private Spinner mToSpinner;
+    private ImageView mRecordIcon;
+
 
     protected StateMaintainer mStateMaintainer;
 
@@ -96,6 +131,7 @@ public class DiscoverFragment extends ContractFragment<DiscoverFragment.Contract
     private void initView(View view) {
         mOriginalText = (TextView) view.findViewById(R.id.text_original);
         mTranslatedText = (TextView) view.findViewById(R.id.text_translation);
+        mRecordIcon = (ImageView) view.findViewById(R.id.recording_icon);
         // TODO setup spinner's
     }
 
