@@ -6,11 +6,14 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.translatethis.R;
+import com.example.translatethis.common.Constants;
+import com.example.translatethis.common.SharedPrefsUtils;
 import com.example.translatethis.main.common.ContractFragment;
 import com.example.translatethis.main.common.StateMaintainer;
 import com.example.translatethis.main.discover.MainMVP;
@@ -78,7 +81,9 @@ public class DiscoverFragment extends ContractFragment<DiscoverFragment.Contract
     private Spinner mFromSpinner;
     private Spinner mToSpinner;
     private ImageView mRecordIcon;
-
+    private boolean mHasOptionChanged = false;
+    private String mFromLanguage = Constants.LANGUAGE_CODES[0];
+    private String mToLanguage = Constants.LANGUAGE_CODES[0];
 
     protected StateMaintainer mStateMaintainer;
 
@@ -100,6 +105,8 @@ public class DiscoverFragment extends ContractFragment<DiscoverFragment.Contract
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.content_discover, container, false);
         initView(view);
+        initFromSpinner(view);
+        initToSpinner(view);
         setupBottomToolbarButtons(view);
         setupMVP();
         return view;
@@ -132,8 +139,65 @@ public class DiscoverFragment extends ContractFragment<DiscoverFragment.Contract
         mOriginalText = (TextView) view.findViewById(R.id.text_original);
         mTranslatedText = (TextView) view.findViewById(R.id.text_translation);
         mRecordIcon = (ImageView) view.findViewById(R.id.recording_icon);
-        // TODO setup spinner's
     }
+
+    private void initFromSpinner(View view) {
+        mFromSpinner = (Spinner) view.findViewById(R.id.spinner_from);
+        mFromSpinner.setSaveEnabled(true);
+        mFromSpinner.setSelection(SharedPrefsUtils.getFromLanguage(getActivityContext()));
+        mFromLanguage = Constants.LANGUAGE_CODES[SharedPrefsUtils.getFromLanguage(getActivityContext())];
+        mFromSpinner.post(fromLanguageRunnable);
+    }
+
+    Runnable fromLanguageRunnable = new Runnable() {
+        @Override
+        public void run() {
+            mFromSpinner.setOnItemSelectedListener(fromLanguageListener);
+        }
+    };
+
+    AdapterView.OnItemSelectedListener fromLanguageListener = new AdapterView.OnItemSelectedListener() {
+        @Override
+        public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
+            mFromLanguage = Constants.LANGUAGE_CODES[position];
+            mHasOptionChanged = true;
+            SharedPrefsUtils.updateFromLanguage(getActivityContext(), position);
+        }
+
+        @Override
+        public void onNothingSelected(AdapterView<?> adapterView) {
+            // no-op
+        }
+    };
+
+    private void initToSpinner(View view) {
+        mToSpinner = (Spinner) view.findViewById(R.id.spinner_to);
+        mToSpinner.setEnabled(true);
+        mToSpinner.setSelection(SharedPrefsUtils.getToLanguage(getActivityContext()));
+        mToLanguage = Constants.LANGUAGE_CODES[SharedPrefsUtils.getToLanguage(getActivityContext())];
+        mToSpinner.post(toLanguageRunnable);
+    }
+
+    Runnable toLanguageRunnable = new Runnable() {
+        @Override
+        public void run() {
+            mToSpinner.setOnItemSelectedListener(toLanguageListener);
+        }
+    };
+
+    AdapterView.OnItemSelectedListener toLanguageListener = new AdapterView.OnItemSelectedListener() {
+        @Override
+        public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
+            mToLanguage = Constants.LANGUAGE_CODES[position];
+            mHasOptionChanged = true;
+            SharedPrefsUtils.updateToLanguage(getActivityContext(), position);
+        }
+
+        @Override
+        public void onNothingSelected(AdapterView<?> adapterView) {
+            // no-op
+        }
+    };
 
     private void setupBottomToolbarButtons(View view) {
         view.findViewById(R.id.action_record).setOnClickListener(buttonClickListener);

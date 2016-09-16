@@ -29,7 +29,7 @@ public class DiscoverPresenter implements
     private SpeechRecognitionMode mSpeechMode = SpeechRecognitionMode.ShortPhrase;
     private String mLanguageCode = Constants.LANGUAGE_CODES[0]; // default English-GB
     private String mKey = Constants.PRIMARY_SUBSCRIPTION_KEY;
-    private boolean mHasStartedRecording;
+    private boolean mHasStartedRecording = false;
 
     // constructor
     public DiscoverPresenter(MainMVP.RequiredViewOps view) {
@@ -52,8 +52,15 @@ public class DiscoverPresenter implements
     @Override
     public void recordSpeech() {
         if (Utils.isClientConnected(getActivityContext())) {
-            getView().updateResultTextField("Hello world!");
-            getView().recordingStarted();
+            if (mSpeechMode.equals(SpeechRecognitionMode.ShortPhrase)) { // FIXME
+                // clear the text field to begin
+                getView().updateResultTextField("");
+                initRecording();
+                if (mClient != null && !mHasStartedRecording) {
+                    getView().recordingStarted(); // set record light 'on'
+                    mClient.startMicAndRecognition();
+                }
+            }
         } else {
             getView().isClientConnected(false);
         }
@@ -144,6 +151,12 @@ public class DiscoverPresenter implements
 
     }
     // END
+
+    // Helper methods
+    private void initRecording() {
+
+    }
+
 
 
 
