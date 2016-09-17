@@ -13,17 +13,18 @@ public interface MainMVP {
         Context getAppContext();
         Context getActivityContext();
         void showMessage(String message);
-        void updateResultTextField(String update);
-        void updateTranslatedTextField(String result);
-        void recordingStarted();
-        void recordingComplete();
+        void updateFromTextField(String update);
+        void updateFromSmallText(String update);
+        void appendFromTextField(String text);
+        void updateToTextField(String result);
+        void isServiceRunning(boolean isRunning);
         void isClientConnected(boolean result);
     }
 
     // implemented by the Presenter, available to the View
     interface ProvidedPresenterOps {
+        void hasLanguageOptionsChanged(boolean value);
         void recordSpeech();
-        // void onCompletion();
         void editResult();
         void translateResult();
         void playResult(String filePath);

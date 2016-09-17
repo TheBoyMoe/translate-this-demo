@@ -19,6 +19,11 @@ import com.example.translatethis.main.common.StateMaintainer;
 import com.example.translatethis.main.discover.MainMVP;
 import com.example.translatethis.main.discover.model.DiscoverModel;
 import com.example.translatethis.main.discover.presenter.DiscoverPresenter;
+import com.example.translatethis.main.discover.task.AppendFromTextFieldTask;
+import com.example.translatethis.main.discover.task.UpdateImageResourceTask;
+import com.example.translatethis.main.discover.task.UpdateTextFieldTask;
+
+import timber.log.Timber;
 
 
 public class DiscoverFragment extends ContractFragment<DiscoverFragment.Contract>
@@ -37,27 +42,40 @@ public class DiscoverFragment extends ContractFragment<DiscoverFragment.Contract
 
     @Override
     public void showMessage(String message) {
+        Timber.i("%s showMessage called", Constants.LOG_TAG);
         getContract().showDiscoverMessage(message);
     }
 
     @Override
-    public void updateResultTextField(String update) {
-        mOriginalText.setText(update);
+    public void updateFromTextField(String update) {
+        new UpdateTextFieldTask(mFromTextView, update).execute();
     }
 
     @Override
-    public void updateTranslatedTextField(String result) {
-
+    public void updateFromSmallText(String update) {
+        new UpdateTextFieldTask(mFromSmallTextView, update).execute();
     }
 
     @Override
-    public void recordingStarted() {
-        mRecordIcon.setImageResource(R.drawable.ic_record_busy);
+    public void appendFromTextField(String text) {
+        new AppendFromTextFieldTask(mFromTextView, text).execute();
     }
 
     @Override
-    public void recordingComplete() {
-        mRecordIcon.setImageResource(R.drawable.ic_record_dark);
+    public void updateToTextField(String result) {
+        new UpdateTextFieldTask(mToTextView, result).execute();
+    }
+
+    @Override
+    public void isServiceRunning(boolean isRunning) {
+        if (isRunning) {
+            new UpdateImageResourceTask(mRecordIcon, R.drawable.ic_record_busy).execute();
+            //new UpdateTextFieldTask(mFromSmallTextView, getString(R.string.from_field_small_text)).execute();
+        }
+        else {
+            new UpdateImageResourceTask(mRecordIcon, R.drawable.ic_record_dark).execute();
+            //new UpdateTextFieldTask(mFromSmallTextView, "").execute();
+        }
     }
 
     @Override
@@ -76,12 +94,13 @@ public class DiscoverFragment extends ContractFragment<DiscoverFragment.Contract
     }
 
     private MainMVP.ProvidedPresenterOps mPresenter;
-    private TextView mOriginalText;
-    private TextView mTranslatedText;
+    private TextView mFromTextView;
+    private TextView mFromSmallTextView;
+    private TextView mToTextView;
     private Spinner mFromSpinner;
     private Spinner mToSpinner;
     private ImageView mRecordIcon;
-    private boolean mHasOptionChanged = false;
+    private boolean mHasOptionChanged = false; // FIXME ?? req'd
     private String mFromLanguage = Constants.LANGUAGE_CODES[0];
     private String mToLanguage = Constants.LANGUAGE_CODES[0];
 
@@ -136,8 +155,9 @@ public class DiscoverFragment extends ContractFragment<DiscoverFragment.Contract
     }
 
     private void initView(View view) {
-        mOriginalText = (TextView) view.findViewById(R.id.text_original);
-        mTranslatedText = (TextView) view.findViewById(R.id.text_translation);
+        mFromTextView = (TextView) view.findViewById(R.id.text_original);
+        mFromSmallTextView = (TextView) view.findViewById(R.id.from_field_small_text);
+        mToTextView = (TextView) view.findViewById(R.id.text_translation);
         mRecordIcon = (ImageView) view.findViewById(R.id.recording_icon);
     }
 
@@ -160,7 +180,9 @@ public class DiscoverFragment extends ContractFragment<DiscoverFragment.Contract
         @Override
         public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
             mFromLanguage = Constants.LANGUAGE_CODES[position];
-            mHasOptionChanged = true;
+            mHasOptionChanged = true; // FIXME ?? req'd
+            // notify the presenter the language option has changed and update SharedPrefs
+            mPresenter.hasLanguageOptionsChanged(true);
             SharedPrefsUtils.updateFromLanguage(getActivityContext(), position);
         }
 
@@ -189,7 +211,9 @@ public class DiscoverFragment extends ContractFragment<DiscoverFragment.Contract
         @Override
         public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
             mToLanguage = Constants.LANGUAGE_CODES[position];
-            mHasOptionChanged = true;
+            mHasOptionChanged = true; // FIXME ?? req'd
+            // notify the presenter the language option has changed and update SharedPrefs
+            mPresenter.hasLanguageOptionsChanged(true);
             SharedPrefsUtils.updateToLanguage(getActivityContext(), position);
         }
 
@@ -233,5 +257,6 @@ public class DiscoverFragment extends ContractFragment<DiscoverFragment.Contract
         }
 
     };
+
 
 }

@@ -13,6 +13,12 @@
     <string name="translated_text_hint">Your translated text will appear here</string>
     <string name="original_text_hint">Tap on the mic button to start recording</string>
     <string name="network_error_message">Network error, check connection</string>
+    <string name="partial_text_result">PARTIAL RESULT:\t\t</string>
+    <string name="server_error">Server error, try again</string>
+    <string name="speech_service_stops_automatically">Automatically stops after 15 secs</string>
+    <string name="speech_service_still_processing">Still processing</string>
+    <string name="unknown_error_has_occurred">Sorry an error has occurred! Try again</string>
+    <string name="recording_speech">RECORDING...</string>
 
     <string-array name="speech_mode">
         <item>Short phrase</item>
