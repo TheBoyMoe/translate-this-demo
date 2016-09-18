@@ -45,18 +45,24 @@
     </style>
 
     <style name="TextStyle.DiscoverTextViewStyle">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">match_parent</item>
         <item name="android:paddingLeft">@dimen/normal</item>
         <item name="android:paddingRight">@dimen/normal</item>
-        <item name="android:gravity">center</item>
     </style>
 
-    <style name="TextStyle.DiscoverTextViewStyle.EditText">
+    <style name="TextStyle.DiscoverTextViewStyle.FromText">
         <item name="android:cursorVisible">false</item>
         <item name="android:focusable">false</item>
         <item name="android:background">@color/colorNeutral</item>
         <item name="android:inputType">textMultiLine</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:gravity">center_horizontal</item>
+    </style>
+
+    <style name="TextStyle.DiscoverTextViewStyle.ToText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:gravity">center</item>
     </style>
 
     <style name="TextStyle.FromFieldSmallText">

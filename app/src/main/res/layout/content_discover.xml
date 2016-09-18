@@ -8,114 +8,96 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        tools:ignore="UselessParent">
 
+    <!-- From text -->
+    <android.support.v7.widget.CardView
+        style="@style/CardViewStyle"
+        app:cardUseCompatPadding="true"
+        app:cardCornerRadius="@dimen/corner_radius"
+        tools:ignore="UnusedAttribute">
 
-        <!-- From text -->
-        <android.support.v7.widget.CardView
-            style="@style/CardViewStyle"
-            app:cardUseCompatPadding="true"
-            app:cardCornerRadius="@dimen/corner_radius"
-            tools:ignore="UnusedAttribute">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <ScrollView
-                    android:paddingTop="@dimen/normal"
-                    android:paddingBottom="@dimen/small"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <EditText
-                        android:id="@+id/text_original"
-                        android:hint="@string/original_text_hint"
-                        style="@style/TextStyle.DiscoverTextViewStyle.EditText"
-                        />
-
-                </ScrollView>
-
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_alignParentBottom="true"
-                    android:padding="@dimen/normal"
-                    android:gravity="center_vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    tools:ignore="UseCompoundDrawables">
-
-                    <ImageView
-                        android:id="@+id/recording_icon"
-                        android:layout_gravity="center_vertical"
-                        android:src="@drawable/ic_record_dark"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        tools:ignore="ContentDescription"/>
-
-                    <TextView
-                        android:id="@+id/from_field_small_text"
-                        style="@style/TextStyle.FromFieldSmallText"/>
-
-                </LinearLayout>
-
-
-
-            </RelativeLayout>
-
-        </android.support.v7.widget.CardView>
-        
-        <!-- language bar -->
-        <LinearLayout
-            android:id="@+id/language_bar"
-            android:layout_margin="@dimen/normal"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
+        <RelativeLayout
+            android:paddingTop="@dimen/normal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
-            <android.support.v7.widget.AppCompatSpinner
-                android:id="@+id/spinner_from"
-                android:entries="@array/supported_languages"
-                android:prompt="@string/translate_from"
-                style="@style/SpinnerStyle"/>
+            <EditText
+                android:id="@+id/text_original"
+                android:hint="@string/original_text_hint"
+                style="@style/TextStyle.DiscoverTextViewStyle.FromText"
+                />
 
-            <ImageView
-                android:src="@drawable/ic_swap_dark"
-                android:layout_marginLeft="@dimen/medium"
-                android:layout_marginRight="@dimen/medium"
-                android:layout_width="@dimen/icon_size"
-                android:layout_height="@dimen/icon_size"
-                tools:ignore="ContentDescription"/>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_alignParentBottom="true"
+                android:padding="@dimen/normal"
+                android:gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:ignore="UseCompoundDrawables">
 
-            <android.support.v7.widget.AppCompatSpinner
-                android:id="@+id/spinner_to"
-                android:entries="@array/supported_languages"
-                android:prompt="@string/translate_to"
-                style="@style/SpinnerStyle"/>
+                <ImageView
+                    android:id="@+id/recording_icon"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/ic_record_dark"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:ignore="ContentDescription"/>
 
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/from_field_small_text"
+                    style="@style/TextStyle.FromFieldSmallText"/>
 
-            <!-- To Text -->
-        <android.support.v7.widget.CardView
-            style="@style/CardViewStyle"
-            app:cardUseCompatPadding="true"
-            app:cardCornerRadius="@dimen/corner_radius"
-            tools:ignore="UnusedAttribute">
+            </LinearLayout>
 
-            <TextView
-                android:id="@+id/text_translation"
-                android:hint="@string/translated_text_hint"
-                style="@style/TextStyle.DiscoverTextViewStyle"/>
+        </RelativeLayout>
 
-        </android.support.v7.widget.CardView>
+    </android.support.v7.widget.CardView>
+
+    <!-- language selection bar -->
+    <LinearLayout
+        android:id="@+id/language_bar"
+        android:layout_margin="@dimen/normal"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.AppCompatSpinner
+            android:id="@+id/spinner_from"
+            android:entries="@array/supported_languages"
+            android:prompt="@string/translate_from"
+            style="@style/SpinnerStyle"/>
+
+        <ImageView
+            android:src="@drawable/ic_swap_dark"
+            android:layout_marginLeft="@dimen/medium"
+            android:layout_marginRight="@dimen/medium"
+            android:layout_width="@dimen/icon_size"
+            android:layout_height="@dimen/icon_size"
+            tools:ignore="ContentDescription"/>
+
+        <android.support.v7.widget.AppCompatSpinner
+            android:id="@+id/spinner_to"
+            android:entries="@array/supported_languages"
+            android:prompt="@string/translate_to"
+            style="@style/SpinnerStyle"/>
 
     </LinearLayout>
+
+    <!-- To Text -->
+    <android.support.v7.widget.CardView
+        style="@style/CardViewStyle"
+        app:cardUseCompatPadding="true"
+        app:cardCornerRadius="@dimen/corner_radius"
+        tools:ignore="UnusedAttribute">
+
+        <TextView
+            android:id="@+id/text_translation"
+            android:hint="@string/translated_text_hint"
+            style="@style/TextStyle.DiscoverTextViewStyle.ToText"/>
+
+    </android.support.v7.widget.CardView>
 
     <!-- bottom toolbar -->
     <LinearLayout
