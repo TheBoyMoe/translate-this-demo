@@ -15,7 +15,6 @@ public interface MainMVP {
         void showMessage(String message);
         void updateFromTextField(String update);
         void updateFromSmallText(String update);
-        void appendFromTextField(String text);
         void updateToTextField(String result);
         void isServiceRunning(boolean isRunning);
         void isClientConnected(boolean result);

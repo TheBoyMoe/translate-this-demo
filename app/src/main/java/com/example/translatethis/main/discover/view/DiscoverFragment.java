@@ -19,11 +19,9 @@ import com.example.translatethis.main.common.StateMaintainer;
 import com.example.translatethis.main.discover.MainMVP;
 import com.example.translatethis.main.discover.model.DiscoverModel;
 import com.example.translatethis.main.discover.presenter.DiscoverPresenter;
-import com.example.translatethis.main.discover.task.AppendFromTextFieldTask;
+import com.example.translatethis.main.discover.task.ShowMessageTask;
 import com.example.translatethis.main.discover.task.UpdateImageResourceTask;
 import com.example.translatethis.main.discover.task.UpdateTextFieldTask;
-
-import timber.log.Timber;
 
 
 public class DiscoverFragment extends ContractFragment<DiscoverFragment.Contract>
@@ -42,8 +40,7 @@ public class DiscoverFragment extends ContractFragment<DiscoverFragment.Contract
 
     @Override
     public void showMessage(String message) {
-        Timber.i("%s showMessage called", Constants.LOG_TAG);
-        getContract().showDiscoverMessage(message);
+        new ShowMessageTask(this, message).execute();
     }
 
     @Override
@@ -54,11 +51,6 @@ public class DiscoverFragment extends ContractFragment<DiscoverFragment.Contract
     @Override
     public void updateFromSmallText(String update) {
         new UpdateTextFieldTask(mFromSmallTextView, update).execute();
-    }
-
-    @Override
-    public void appendFromTextField(String text) {
-        new AppendFromTextFieldTask(mFromTextView, text).execute();
     }
 
     @Override
@@ -84,8 +76,6 @@ public class DiscoverFragment extends ContractFragment<DiscoverFragment.Contract
             getContract().showDiscoverMessage(getString(R.string.network_error_message));
         }
     }
-
-
     // END
 
     public interface Contract {

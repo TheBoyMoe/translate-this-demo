@@ -70,6 +70,8 @@ public class DiscoverPresenter implements
             if (mClient != null && !mHasStartedRecording) {
                 mClient.startMicAndRecognition();
                 getView().isServiceRunning(true); // set record light 'on'
+            } else {
+                getView().showMessage(getActivityContext().getString(R.string.speech_service_busy));
             }
         } else {
             getView().isClientConnected(false);
@@ -166,7 +168,7 @@ public class DiscoverPresenter implements
     @Override
     public void onError(final int errorCode, final String response) {
         getView().isServiceRunning(false);
-        getView().showMessage(getActivityContext().getString(R.string.server_error)); // FIXME called from bkgd thread
+        getView().showMessage(getActivityContext().getString(R.string.server_error));
         getView().updateFromTextField(String.format(Locale.ENGLISH, "Error: %d, %s", errorCode, response));
         getView().updateFromSmallText("");
         mClient = null; // force re-initialization of client
@@ -192,6 +194,7 @@ public class DiscoverPresenter implements
     // Helper methods
     private void initRecording() {
         if (mHasOptionsChanged || mClient == null) {
+            getView().showMessage("Connecting to server");
             getView().updateFromTextField("");
             if (mKey.equals(Constants.PRIMARY_SUBSCRIPTION_KEY)) {
                 Log.i(Constants.LOG_TAG, "Connecting with " + Constants.PRIMARY_SUBSCRIPTION_KEY);
