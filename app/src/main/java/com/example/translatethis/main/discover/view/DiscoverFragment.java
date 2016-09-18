@@ -233,14 +233,17 @@ public class DiscoverFragment extends ContractFragment<DiscoverFragment.Contract
                     mPresenter.editResult();
                     break;
                 case R.id.action_translate:
-                    mPresenter.translateResult();
+                    // TODO strip RESULT: from text string
+                    if (mToTextView.getText() != null || !mToTextView.getText().toString().isEmpty()) {
+                        mPresenter.translateResult(mFromTextView.getText().toString());
+                    } else {
+                        getContract().showDiscoverMessage("No text to translate");
+                    }
                     break;
                 case R.id.action_play:
-                    // TODO
                     mPresenter.playResult("");
                     break;
                 case R.id.action_save:
-                    // TODO
                     mPresenter.saveResult(null);
                     break;
             }

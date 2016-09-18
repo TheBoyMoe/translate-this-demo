@@ -9,6 +9,8 @@ import com.example.translatethis.common.Constants;
 import com.example.translatethis.common.SharedPrefsUtils;
 import com.example.translatethis.common.Utils;
 import com.example.translatethis.main.discover.MainMVP;
+import com.example.translatethis.main.discover.task.TranslationTask;
+import com.example.translatethis.main.discover.task.TranslationTaskListener;
 import com.example.translatethis.model.Item;
 import com.microsoft.projectoxford.speechrecognition.ISpeechRecognitionServerEvents;
 import com.microsoft.projectoxford.speechrecognition.MicrophoneRecognitionClient;
@@ -24,7 +26,8 @@ import timber.log.Timber;
 public class DiscoverPresenter implements
         MainMVP.ProvidedPresenterOps,
         MainMVP.RequiredPresenterOps,
-        ISpeechRecognitionServerEvents {
+        ISpeechRecognitionServerEvents,
+        TranslationTaskListener {
 
     // cache references to the Presenter and Model
     private WeakReference<MainMVP.RequiredViewOps> mView;
@@ -85,9 +88,19 @@ public class DiscoverPresenter implements
     }
 
     @Override
-    public void translateResult() {
-        // TODO
-        getView().showMessage("Translate the text to chosen language");
+    public void translateResult(String fromText) {
+        if (Utils.isClientConnected(getActivityContext())) {
+            // execute the translation passing in a reference to the listener
+            new TranslationTask(this, getActivityContext(), fromText).execute();
+        } else {
+            getView().isClientConnected(false);
+        }
+    }
+
+    @Override
+    public void translationResult(String translatedText) {
+        // forward the translated text to the fragment to be displayed
+        getView().updateToTextField(String.format(Locale.ENGLISH, "RESULT:\n%s", translatedText));
     }
 
     @Override
@@ -146,7 +159,6 @@ public class DiscoverPresenter implements
 
     @Override
     public void onFinalResponseReceived(final RecognitionResult recognitionResult) {
-        //getView().updateFromTextField("");
         if (mClient != null) {
             mClient.endMicAndRecognition();
         }
@@ -154,7 +166,7 @@ public class DiscoverPresenter implements
         getView().updateFromSmallText("");
         if (recognitionResult.Results.length > 0) {
             String result = recognitionResult.Results[recognitionResult.Results.length -1].DisplayText;
-            getView().updateFromTextField("RESULT:\n" + result);
+            getView().updateFromTextField(String.format(Locale.ENGLISH, "RESULT:\n%s", result));
         } else {
             getView().updateFromTextField(getActivityContext().getString(R.string.unknown_error_has_occurred));
         }
@@ -208,5 +220,6 @@ public class DiscoverPresenter implements
             mHasOptionsChanged = false;
         }
     }
+
 
 }

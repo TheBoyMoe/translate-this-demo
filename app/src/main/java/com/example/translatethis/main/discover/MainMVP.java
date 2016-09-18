@@ -25,7 +25,7 @@ public interface MainMVP {
         void hasLanguageOptionsChanged(boolean value);
         void recordSpeech();
         void editResult();
-        void translateResult();
+        void translateResult(String fromText);
         void playResult(String filePath);
         int saveResult(Item item);
         void setView(RequiredViewOps view);
