@@ -2,6 +2,7 @@ package com.example.translatethis.common;
 
 
 import com.example.translatethis.BuildConfig;
+import com.memetix.mst.language.Language;
 
 public class Constants {
 
@@ -26,12 +27,12 @@ public class Constants {
     };
 
     // languages available for translation - order must match string array order
-//    public static final Language[] LANGUAGES = {
-//            Language.ENGLISH,
-//            Language.FRENCH,
-//            Language.GERMAN,
-//            Language.ITALIAN,
-//            Language.SPANISH
-//    };
+    public static final Language[] LANGUAGES = {
+            Language.ENGLISH,
+            Language.FRENCH,
+            Language.GERMAN,
+            Language.ITALIAN,
+            Language.SPANISH
+    };
 
 }
