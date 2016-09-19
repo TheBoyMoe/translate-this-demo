@@ -1,14 +1,27 @@
 Translate This Android App
 ==========================
  
-'Translate This' allows you to use Microsoft's Speech-to-Text, Text-to-Speech and 
+'Translate This' allows you to use Microsoft's Cognitive Services Speech-to-Text, Text-to-Speech and 
 Translation Services Api to translate between English, French, German, Italian or Spanish. 
-Based on .........
+Based on Translation App create by Tim Buchalka, in the Udemy course Learn Android App Development
+with Java https://www.udemy.com/android-marshmallow-java-app-development-course/
+
+British English, French, German, Italian and Spanish are supported. Select spoken language
+using the left spinner, and the right spinner to select the target language
+The app uses a simple workflow following the buttons on the bottom toolbar.
+Going from left to right:
+- Record the phrase you want translated (Speech-to-text).
+- Edit the returned text if required. Not implemented.
+- Translate the phrase to the language of choice (translation services).
+- Hear the translation (text-to-speech).
+- Save the phrase and translation, which can be reviewed via the Review Tab. Not implemented.
 
 The app is a learning exercise in the implementation of the following:
 - Designed with a phone layout in mind using activities/fragments
-- Implements an MVP pattern using ........
-- Activity/fragment communication via interfaces
+- Implements an MVP pattern using based on the articles of Tin Megali 'How to Adopt Model View Presenter on Android
+    https://code.tutsplus.com/series/how-to-adopt-model-view-presenter-on-android--cms-1012  
+- Activity/fragment communication via interfaces.
+- Microsoft's Cognitive Services Speech-to-Text, Translation and Text-to-Speech Api's.
 
 Pre-requisites
 --------------
@@ -50,7 +63,13 @@ The project uses the following 3rd party libraries:
 - Chiu-Ki Chan's AutoRecyclerView (http://blog.sqisland.com/2014/12/recyclerview-autofit-grid.html)
 - Timber Android logging library by Jake Wharton (https://github.com/JakeWharton/timber)
 - Facebook's Stetho debugging library (https://github.com/facebook/stetho)
-- Udemy course.....
+- Microsoft Cognitive Service's Speech-to-Text, Translation and Text-to-Speech Api's
+    http://www.microsoft.com/cognitive-services
+
+- Tin Megali's articles on implementing the MVP pattern in Android.
+    https://code.tutsplus.com/series/how-to-adopt-model-view-presenter-on-android--cms-1012  
+- Tim Buchalka's Udemy Course, Learning Android App Development with Java
+    https://www.udemy.com/android-marshmallow-java-app-development-course/
 
 MIT License
 -----------
