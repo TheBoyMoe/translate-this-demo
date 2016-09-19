@@ -47,14 +47,14 @@ MSCognitiveServicesSecondaryKey = "your key";
 MSCognitiveServicesClientIDValue = "your value";
 MSCognitiveServicesClientSecretValue = "your value";
 
-and add the key/value .....
+and add your own values.
 
 Screenshots
 -----------
 
-![Phone](screencasts/phone-sequence-one.gif "Interacting with the app on a tablet")
+![Phone](screencasts/phone_sequence_one.gif "Interacting with the app on a tablet")
 
-![Phone](screencasts/phone-sequence-two.gif "Interacting with the app on a phone")
+![Phone](screencasts/phone_sequence_two.gif "Interacting with the app on a phone")
 
 Credit
 ------
