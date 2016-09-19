@@ -46,10 +46,9 @@ public class DiscoverPresenter implements
     }
 
     protected MainMVP.RequiredViewOps getView() {
-        // TODO execute from a background thread
         if (mView != null) {
             return mView.get();
-        } else {
+        } else { // FIXME NPE when device is rotated due to view being unavailable
             throw new NullPointerException("View is unavailable");
         }
     }
@@ -100,6 +99,7 @@ public class DiscoverPresenter implements
     @Override
     public void translationResult(String translatedText) {
         // forward the translated text to the fragment to be displayed
+        // FIXME translated text lost on device rotation
         getView().updateToTextField(String.format(Locale.ENGLISH, "RESULT:\n%s", translatedText));
     }
 
@@ -153,8 +153,10 @@ public class DiscoverPresenter implements
     // impl of MS Speech Recognition Server Event methods
     @Override
     public void onPartialResponseReceived(final String response) {
-        getView().updateFromTextField(String.format(Locale.ENGLISH, "%s%s",
-                getActivityContext().getString(R.string.partial_text_result), response));
+        if (getView() != null && getActivityContext() != null) {
+            getView().updateFromTextField(String.format(Locale.ENGLISH, "%s%s",
+                    getActivityContext().getString(R.string.partial_text_result), response));
+        }
     }
 
     @Override
@@ -195,7 +197,8 @@ public class DiscoverPresenter implements
                 mClient.endMicAndRecognition();
             }
             getView().isServiceRunning(false);
-            getView().updateFromSmallText(getActivityContext().getString(R.string.speech_service_still_processing));
+            getView().updateFromSmallText(
+                    getActivityContext().getString(R.string.speech_service_still_processing));
         } else {
             getView().isServiceRunning(true);
             getView().updateFromSmallText(getActivityContext().getString(R.string.speech_service_stops_automatically));
