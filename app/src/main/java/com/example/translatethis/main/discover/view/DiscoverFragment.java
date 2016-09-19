@@ -105,6 +105,7 @@ public class DiscoverFragment extends ContractFragment<DiscoverFragment.Contract
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setRetainInstance(true);
         mStateMaintainer =
             new StateMaintainer(getActivity().getSupportFragmentManager(), DiscoverFragment.class.getName());
     }
@@ -201,7 +202,7 @@ public class DiscoverFragment extends ContractFragment<DiscoverFragment.Contract
         @Override
         public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
             mToLanguage = Constants.LANGUAGE_CODES[position];
-            mHasOptionChanged = true; // FIXME ?? req'd
+            mHasOptionChanged = true;
             // notify the presenter the language option has changed and update SharedPrefs
             mPresenter.hasLanguageOptionsChanged(true);
             SharedPrefsUtils.updateToLanguage(getActivityContext(), position);
@@ -236,7 +237,7 @@ public class DiscoverFragment extends ContractFragment<DiscoverFragment.Contract
                     // TODO strip RESULT: from text string
                     if (mFromTextView.getText() != null && !mFromTextView.getText().toString().isEmpty()) {
                         String temp = mFromTextView.getText().toString();
-                        String toTranslate = temp.substring(7); // strip "RESULT:" from text
+                        String toTranslate = temp.substring(8); // strip "RESULT:\n" from text
                         mPresenter.translateResult(toTranslate);
                     } else {
                         getContract().showDiscoverMessage("No text to translate");
