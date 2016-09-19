@@ -234,8 +234,10 @@ public class DiscoverFragment extends ContractFragment<DiscoverFragment.Contract
                     break;
                 case R.id.action_translate:
                     // TODO strip RESULT: from text string
-                    if (mToTextView.getText() != null || !mToTextView.getText().toString().isEmpty()) {
-                        mPresenter.translateResult(mFromTextView.getText().toString());
+                    if (mFromTextView.getText() != null && !mFromTextView.getText().toString().isEmpty()) {
+                        String temp = mFromTextView.getText().toString();
+                        String toTranslate = temp.substring(7); // strip "RESULT:" from text
+                        mPresenter.translateResult(toTranslate);
                     } else {
                         getContract().showDiscoverMessage("No text to translate");
                     }
