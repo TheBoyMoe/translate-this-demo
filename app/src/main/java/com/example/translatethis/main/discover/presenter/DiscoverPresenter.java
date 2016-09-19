@@ -8,6 +8,7 @@ import com.example.translatethis.R;
 import com.example.translatethis.common.Constants;
 import com.example.translatethis.common.SharedPrefsUtils;
 import com.example.translatethis.common.Utils;
+import com.example.translatethis.common.VoicesUtils;
 import com.example.translatethis.main.discover.MainMVP;
 import com.example.translatethis.main.discover.task.TranslationTask;
 import com.example.translatethis.main.discover.task.TranslationTaskListener;
@@ -17,6 +18,8 @@ import com.microsoft.projectoxford.speechrecognition.MicrophoneRecognitionClient
 import com.microsoft.projectoxford.speechrecognition.RecognitionResult;
 import com.microsoft.projectoxford.speechrecognition.SpeechRecognitionMode;
 import com.microsoft.projectoxford.speechrecognition.SpeechRecognitionServiceFactory;
+import com.microsoft.speech.tts.Synthesizer;
+import com.microsoft.speech.tts.Voice;
 
 import java.lang.ref.WeakReference;
 import java.util.Locale;
@@ -39,6 +42,7 @@ public class DiscoverPresenter implements
     private String mKey = Constants.PRIMARY_SUBSCRIPTION_KEY;
     private boolean mHasStartedRecording = false;
     private boolean mHasOptionsChanged = false;
+    private String mTranslatedText;
 
     // constructor
     public DiscoverPresenter(MainMVP.RequiredViewOps view) {
@@ -101,12 +105,23 @@ public class DiscoverPresenter implements
         // forward the translated text to the fragment to be displayed
         // FIXME translated text lost on device rotation
         getView().updateToTextField(String.format(Locale.ENGLISH, "RESULT:\n%s", translatedText));
+        mTranslatedText = translatedText;
     }
 
     @Override
-    public void playResult(String filePath) {
-        // TODO
-        getView().showMessage("Play the translated text");
+    public void playResult() {
+        if (mTranslatedText != null && !mTranslatedText.isEmpty()) {
+            String spokenLanguage = Constants.LANGUAGE_CODES[SharedPrefsUtils.getToLanguage(getActivityContext())];
+            Synthesizer synthesizer = new Synthesizer(getActivityContext().getString(R.string.app_name),
+                    Constants.PRIMARY_SUBSCRIPTION_KEY);
+            Voice voice = VoicesUtils.getVoice(spokenLanguage, 0);
+            if (voice!= null) {
+                synthesizer.SetVoice(voice, voice);
+                synthesizer.SpeakToAudio(mTranslatedText);
+            }
+        } else {
+            getView().showMessage(getActivityContext().getString(R.string.translation_not_available));
+        }
     }
 
     @Override

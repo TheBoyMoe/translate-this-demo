@@ -21,6 +21,7 @@
     <string name="recording_speech">RECORDING...</string>
     <string name="speech_service_busy">Already recording</string>
     <string name="executing_translation">Executing translation</string>
+    <string name="translation_not_available">Translation not available</string>
 
     <string-array name="speech_mode">
         <item>Short phrase</item>

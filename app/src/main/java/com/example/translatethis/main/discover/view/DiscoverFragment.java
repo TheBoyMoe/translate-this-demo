@@ -244,7 +244,7 @@ public class DiscoverFragment extends ContractFragment<DiscoverFragment.Contract
                     }
                     break;
                 case R.id.action_play:
-                    mPresenter.playResult("");
+                    mPresenter.playResult();
                     break;
                 case R.id.action_save:
                     mPresenter.saveResult(null);

@@ -26,7 +26,7 @@ public interface MainMVP {
         void recordSpeech();
         void editResult();
         void translateResult(String fromText);
-        void playResult(String filePath);
+        void playResult();
         int saveResult(Item item);
         void setView(RequiredViewOps view);
         void onDestroy(boolean isChangingConfiguration);
